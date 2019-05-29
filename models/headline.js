@@ -19,7 +19,6 @@ var headlineSchema = new Schema({
     }
 });
 
-var Headline = mongoose.Schema,
-    model("Headline", headlineSchema);
+var Headline = mongoose.model("Headline", headlineSchema);
 
 module.exports = Headline;
