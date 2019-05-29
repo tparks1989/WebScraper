@@ -1,4 +1,5 @@
 var express = require("express");
+var mongoose = require("mongoose");
 var expressHandlebars = require("express-handlebars");
 var bodyParser = require("body-parser");
 
@@ -19,6 +20,16 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(router);
+
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(db, function (error) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log("mongoose connection is successful");
+    }
+});
 
 app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
